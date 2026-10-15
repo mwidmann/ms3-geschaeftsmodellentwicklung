@@ -1,0 +1,22 @@
+# Ignore the macOS temp files
+*.DS_Store
+
+# Ignore everything by default
+*
+
+# Include directories
+!*/
+
+# Include .gitignore
+!.gitignore
+
+# Include latex source files, bibliography, and markdown files
+!*.tex
+!*.md
+!*.bib
+
+# Include common image formats
+!*.png
+!*.jpg
+!*.jpeg
+!*.svg

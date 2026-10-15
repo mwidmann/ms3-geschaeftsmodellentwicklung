@@ -1,0 +1,59 @@
+\captionsetup{format=hang, justification=raggedright} %Formatierung der Bildunterschriften
+\setcounter{secnumdepth}{4} %Tiefe der Gliederung
+\setcounter{tocdepth}{4}   %Tiefe der Gliederung im Inhaltsverzeichnis
+
+\counterwithout{table}{section}
+
+\addbibresource{References/bibliography.bib} %BibLatex-Datenbank
+\setlength{\bibitemsep}{5pt plus 0.3ex} %zum setzen von Abständen zwischen den Quellen im Literaturverzeichnis
+
+%TODO Zitat Platzhalter, Verwendung: \citeTODO{https://google.com}
+\newcommand{\citeTODO}[1]{%
+    \textbf{[ZITAT]}%
+}
+
+%Source für mehrere Quellen in einem Zitat wie. \citeTODO{\source{https://google.com}, {https://google.com}}
+\newcommand{\source}[1]{#1}
+
+%TODO Platzhalter, Verwendung: \TODO{noch zu machen}
+\newcommand{\TODO}[1]{%
+    \textbf{[TODO]}%
+}
+
+\DeclareCiteCommand{\pagecite}
+  {}
+  {\iffieldundef{postnote}{\PackageError{pagecite}{No page number given}}{\printtext[bibhyperref]{\mkbibparens{\printfield{postnote}}}}
+  }
+  {}
+  {}
+
+% This command allows page citations like \pagecite[20] to produce (p.20)
+% and use the last cited key with \textcite
+% Attention: If no correct prior \textcite is found, an error is raised or
+% it will use the last one.
+% ------------------------------------------------------------------
+
+%% Store the last cite key used with \textcite
+%\newcommand{\lastcitekey}{}
+%
+%% Wrapper for \textcite to store the last cite key used
+%\let\oldtextcite\textcite
+%\renewcommand{\textcite}[1]{%
+%    \renewcommand{\lastcitekey}{#1}%
+%    \oldtextcite{#1}%
+%}
+%
+%\DeclareCiteCommand{\pagecitecommand}[\mkbibparens]
+%  {}
+%  {\printtext[bibhyperref]{\printfield{postnote}}}
+%  {}
+%  {}
+%
+%\newcommand{\pagecite}[1]{%
+%    \ifx\lastcitekey\empty
+%        \PackageError{pagecite}
+%    \else
+%        \pagecitecommand[#1]{\lastcitekey}%
+%    \fi
+%}
+% ------------------------------------------------------------------
